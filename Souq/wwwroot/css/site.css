@@ -67,5 +67,21 @@ body {
   bottom: 0;
   width: 100%;
   white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+  line-height: 70px; /* Vertically center the text there */
+}
+
+.main-container {
+   background-image:url('../assets/3511247.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100Vh;
+}
+
+.prodImg {
+    height: 250px !important;
+}
+
+.CartPage {
+    min-height: 100vh;
 }

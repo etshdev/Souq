@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Souq.DataAccessLayer;
+using Souq.Tables;
 
 namespace Souq.Controllers
 {
@@ -20,6 +22,11 @@ namespace Souq.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
+        }
+
+        public IActionResult Index()
+        {
+            return View();
         }
 
         [AllowAnonymous]
@@ -54,9 +61,7 @@ namespace Souq.Controllers
             }
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+
+      
     }
 }

@@ -1,0 +1,460 @@
+html
+{
+    direction: rtl;
+}
+@font-face {
+    font-family: JFFlat;
+    src: url('../fonts/JF-Flat-Regular.ttf');
+
+
+}
+@font-face
+{
+    font-family: DroidArabicKufi;
+    src: url('../fonts/Droid.Arabic.Kufi_DownloadSoftware.iR_.ttf');
+    
+}
+/*  Start header style */
+header
+{
+    background-color: #287db2;
+    
+} 
+header .login 
+{
+  font-size: 14px ;
+  font-weight: 400 ;
+  line-height: 17px;
+  letter-spacing: 0.7px;
+  font-family: JFFlat;
+}
+
+header .login i
+{
+font-size: 14px;
+}
+
+header .contact
+{
+    font-size: 14px ;
+    font-weight: bold ;
+    font-family: 'Dosis', sans-serif;
+    line-height: 17px;
+    letter-spacing: 0.7px;
+}
+
+
+/*  end header style */
+
+
+/*  start nav style */
+
+.MainNav
+{
+    background-color: #2d98da;
+
+}
+
+nav ul 
+{
+    width: 65%;
+}
+nav ul li a
+{
+    font-size: 17px ;
+    font-weight: 400 ;
+    line-height: 17px;
+    letter-spacing: 0.7px;
+    font-family: JFFlat;
+}
+
+nav ul li  .btn 
+{
+    background-color: #45aaf2;
+}
+.logo
+{
+    width:50%;
+}
+/* end navbar */
+/* start of footer */
+footer {
+    background-color: #000000;
+}
+.mail-side h6
+{
+    font-family: DroidArabicKufi;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: -0.2px;
+}
+
+.footer-hr
+{
+    background-color: #2d98da;
+    height: 1px;
+    width: 60px;
+}
+
+.mail-side p
+{
+    font-family: DroidArabicKufi;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #959595;
+}
+.mail-form
+{
+    background-color: #252627;
+    display: inline-block;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+
+}
+.mail-form input
+{
+    background-color:#252627 ;
+    border: 0px transparent ;
+    height: 100%; 
+    border-radius: 0px;   
+    color: white;
+    font-family: DroidArabicKufi;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+    padding-right: 20px;
+ 
+}
+.mail-form input::placeholder
+{
+    color: #ececec;
+    font-family: DroidArabicKufi;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+    background-image: url('../assets/mailarrow.png');
+    background-repeat: no-repeat;
+    background-position:right;
+    text-indent: 35px;
+}
+
+.mail-form button
+{
+    background-color: #2d98da;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    font-family: DroidArabicKufi;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 13px;
+    letter-spacing: 0.38px;
+    border: none;
+}
+
+.gmail 
+{
+    color: white;
+    border: 1px solid #ffffff;
+    border-radius: 50%;
+    font-size: 12px;
+    padding: 15px;
+}
+.twitter
+{
+    color: white;
+    border: 1px solid #ffffff;
+    border-radius: 50%;
+    font-size: 12px;
+    padding: 15px;
+}
+.facebook
+{
+    color: white;
+    border: 1px solid #ffffff;
+    border-radius: 50%;
+    font-size: 12px;
+    padding: 15px;
+}
+.pages-hr
+{
+    background-color: #2d98da;
+    height: 1px;
+    width: 41px;
+}
+.pages h4
+{
+    color: #ffffff;
+    font-family: JFFlat;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: -0.2px;
+}
+.name-of-pages h6
+{
+    color: #959595;
+    font-family: JFFlat;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+}
+.contact-info h4 
+{
+    color: #ffffff;
+    font-family: DroidArabicKufi;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: -0.2px;
+}
+.contact-info-hr
+{
+    background-color: #2d98da;
+    height: 1px;
+    width: 90px;
+}
+.contact-info i
+{
+    font-size: 15px !important;
+}
+.contact-info h6
+{
+    color: #959595;
+    font-family: DroidArabicKufi;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.15px;
+}
+.contact-info span
+{
+    color: #959595;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 37px;
+    letter-spacing: 0.15px;
+
+}
+.main-hr
+{
+    height: 1px;
+    background-color: #22282c;
+    margin: auto;
+    width: 75%;
+}
+.copyright
+{
+    text-align: center !important;
+    width: 100%;
+    color: #ffffff;
+    font-family: JFFlat;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 22px;
+}
+.fa-map-marker-alt
+{
+    color: #2d98da;
+    font-size: 14px;
+    width: 14px;
+    height: 19px;
+}
+/* end of footer*/
+
+/* start  Media Query */
+@media (min-width:0px) and (max-width:576px)
+{
+    header .contact-container
+    {
+        margin: auto;
+    }
+    header .login-container
+    {
+        margin: auto;
+    }
+    
+    .mail-form
+{
+    background-color: #252627;
+    display: inline-block;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+
+}
+.mail-form input
+{
+    background-color:#252627 ;
+    border: 0px transparent ;
+    height: 100%; 
+    border-radius: 0px;   
+    color: white;
+    font-family: DroidArabicKufi;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 20px;
+    padding-right: 20px;
+    width: 150px;
+ 
+}
+.mail-form input::placeholder
+{
+    color: #ececec;
+    font-family: DroidArabicKufi;
+    font-size: 12px;
+    font-weight: 400;
+    background-image: url('../assets/mailarrow.png');
+    background-repeat: no-repeat;
+    background-position:right;
+    text-indent: 10px;
+}
+
+.mail-form button
+{
+    background-color: #2d98da;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    font-family: DroidArabicKufi;
+    color: #ffffff;
+    font-size: 12px ;
+    padding: 10px 6px !important;
+    font-weight: 400;
+    line-height: 13px;
+    letter-spacing: 0.38px;
+    border: none;
+}
+
+
+}
+@media (min-width:577px) and (max-width:768px)
+{
+    header .contact-container
+    {
+        margin: auto;
+    }
+    header .login-container
+    {
+        margin: auto;
+    }
+    
+    .mail-form
+    {
+        background-color: #252627;
+        display: inline-block;
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    
+    }
+    .mail-form input
+    {
+        background-color:#252627 ;
+        border: 0px transparent ;
+        height: 100%; 
+        border-radius: 0px;   
+        color: white;
+        font-family: DroidArabicKufi;
+        font-size: 10px;
+        font-weight: 400;
+        line-height: 20px;
+        padding-right: 20px;
+     
+    }
+    .mail-form input::placeholder
+    {
+        color: #ececec;
+        font-family: DroidArabicKufi;
+        font-size: 12px;
+        font-weight: 400;
+        background-image: url('../assets/mailarrow.png');
+        background-repeat: no-repeat;
+        background-position:right;
+        text-indent: 10px;
+    }
+    
+    .mail-form button
+    {
+        background-color: #2d98da;
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+        font-family: DroidArabicKufi;
+        color: #ffffff;
+        font-size: 12px;
+        padding: 10px !important;
+        font-weight: 400;
+        line-height: 13px;
+        letter-spacing: 0.38px;
+        border: none;
+    }
+    
+}
+@media (min-width:769px) and (max-width:992px)
+{
+    
+
+}
+@media (min-width:993px) and (max-width:1350px)
+{
+
+  
+    .mail-form
+    {
+        background-color: #252627;
+        display: inline-block;
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    
+    }
+    .mail-form input
+    {
+        background-color:#252627 ;
+        border: 0px transparent ;
+        height: 100%; 
+        border-radius: 0px;   
+        color: white;
+        font-family: DroidArabicKufi;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 20px;
+        padding-right: 20px;
+     
+    }
+    .mail-form input::placeholder
+    {
+        color: #ececec;
+        font-family: DroidArabicKufi;
+        font-size: 12px;
+        font-weight: 400;
+        background-image: url('../assets/mailarrow.png');
+        background-repeat: no-repeat;
+        background-position:right;
+        text-indent: 10px;
+    }
+    
+    .mail-form button
+    {
+        background-color: #2d98da;
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+        font-family: DroidArabicKufi;
+        color: #ffffff;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 13px;
+        letter-spacing: 0.38px;
+        border: none;
+    }
+    
+}
+
+/* end Media Query */
