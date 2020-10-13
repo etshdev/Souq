@@ -31,7 +31,7 @@ namespace Souq.DataAccessLayer
             {
                 return SouqDB.SaveChanges() > 0 ? true : false;
             }
-            catch
+            catch(Exception e)
             {
 
                 return false;

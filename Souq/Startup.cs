@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Souq.DataAccessLayer;
 using Microsoft.AspNetCore.Http.Features;
+using AutoMapper;
 
 namespace Souq
 {
@@ -49,6 +50,7 @@ namespace Souq
             services.AddRazorPages();
             services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddAutoMapper(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

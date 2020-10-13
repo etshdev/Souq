@@ -1,16 +1,14 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
-using Microsoft.AspNetCore.Identity;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Souq.Tables
+namespace Souq.ViewsModels
 {
-   public class Product
+    public class ProductViewModel
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]
         public String productName { get; set; }
@@ -30,14 +28,10 @@ namespace Souq.Tables
         [Required]
         public string ProductRamUsage { get; set; }
         [Required]
-        public string productImgUrl { get; set; }
-        [Required]
         public int quantity { get; set; }
 
-        public virtual IdentityUser AppUser { get; set; }
-        [ForeignKey("IdentityUser")]
-        public string AppUserId { get; set; }
-
+        [Display(Name = "Proudct Picture")]
+        public IFormFile productImg { get; set; }
 
     }
 }

@@ -1,0 +1,67 @@
+﻿@model Souq.ViewsModels.ProductViewModel
+
+@{
+    ViewData["Title"] = "AddProduct";
+}
+
+<div class="container py-3">
+    <h2 class="text-center pb-2"><span class="font-weight-bold text-info"> A</span>dd Product </h2>
+    <form action="/product/createproduct" method="post" enctype="multipart/form-data"  > 
+
+        <div class="form-group">
+            <label class="font-weight-bold">Product Name</label>
+            <input type="text" asp-for="productName"  class="form-control text-left "  required>
+        </div>
+
+        <div class="form-group text-left">
+            <label class="font-weight-bold">Category</label>
+            <br />
+            <select asp-for="category" class="form-control text-left">
+                <option value="Laptop" >Laptop</option>
+                <option value="Mobile">Mobile</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="font-weight-bold">Product Brand</label>
+            <input type="text" asp-for="productBrand" class="form-control text-left"  required>
+        </div>
+
+        <div class="form-group">
+            <label class="font-weight-bold">Product Price</label>
+            <input type="number" asp-for="productPrice"  class="form-control text-left"  required>
+        </div>
+
+        <div class="form-group">
+            <label class="font-weight-bold">Disk Usage</label>
+            <input type="text" asp-for="ProductDiskUsage"   class="form-control text-left"  required>
+        </div>
+
+        <div class="form-group">
+            <label class="font-weight-bold">Ram Usage</label>
+            <input type="text" asp-for="ProductRamUsage"  class="form-control text-left"  required>
+        </div>
+
+        <div class="form-group">
+            <label class="font-weight-bold"> Quantity </label>
+            <input type="number" asp-for="quantity"  class="form-control text-left" >
+        </div>
+        <div class="form-group text-left">
+            <label class="font-weight-bold "> product Img </label>
+            <input type="file" asp-for="productImg"  class="form-control-file text-left " >
+            <label class="text-danger"> @ViewBag.imgError </label>
+        </div>
+
+
+
+        <button class="btn btn-info px-2 my-2"> Add Product </button>
+
+
+    </form>
+
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
