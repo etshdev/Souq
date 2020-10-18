@@ -33,7 +33,8 @@ namespace Souq.Tables
         public string productImgUrl { get; set; }
         [Required]
         public int quantity { get; set; }
-
+        [Required]
+        public string Description { get; set; }
         public virtual IdentityUser AppUser { get; set; }
         [ForeignKey("IdentityUser")]
         public string AppUserId { get; set; }

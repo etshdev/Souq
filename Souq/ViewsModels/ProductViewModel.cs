@@ -29,7 +29,10 @@ namespace Souq.ViewsModels
         public string ProductRamUsage { get; set; }
         [Required]
         public int quantity { get; set; }
+        [Required]
+        public string Description { get; set; }
 
+        [Required]
         [Display(Name = "Proudct Picture")]
         public IFormFile productImg { get; set; }
 

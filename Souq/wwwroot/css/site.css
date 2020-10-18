@@ -63,11 +63,11 @@ body {
   margin-bottom: 60px;
 }
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 70px; /* Vertically center the text there */
+    position:absolute !important;
+    bottom:0 !important;
+  width: 100% !important;
+  white-space: nowrap !important;
+  line-height: 70px !important; /* Vertically center the text there */
 }
 
 .main-container {

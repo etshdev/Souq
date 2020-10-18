@@ -13,6 +13,8 @@ namespace Souq.Models
         {
             CreateMap<Product,ViewsModels.ProductViewModel>();
             CreateMap<ViewsModels.ProductViewModel, Product>();
+
+           // CreateMap<ViewsModels.ProductViewModel, Product>().ForMember(x => x.quantity, x => x.MapFrom(x => x.quantity));
         }
     }
 }

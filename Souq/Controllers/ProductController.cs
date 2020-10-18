@@ -81,6 +81,7 @@ namespace Souq.Controllers
                         ProductDiskUsage = model.ProductDiskUsage,
                         ProductRamUsage = model.ProductRamUsage,
                         quantity = model.quantity,
+                        Description=model.Description,
                         category = (Product.Category)model.category,
                         productImgUrl = path + fileName + fileExtention,
                         AppUserId = _userManager.GetUserId(User)
@@ -157,6 +158,7 @@ namespace Souq.Controllers
                     product.ProductDiskUsage = model.ProductDiskUsage;
                     product.ProductRamUsage = model.ProductRamUsage;
                     product.quantity = model.quantity;
+                    product.Description = model.Description;
                     product.category = (Product.Category)model.category;                    
                     product.AppUserId  = _userManager.GetUserId(User);
                     if (model.productImg != null)
@@ -198,7 +200,12 @@ namespace Souq.Controllers
 
         }
 
-
+      [HttpGet]
+      public IActionResult Product(int id)
+      {
+            var product = _repoProduct.GetById(id);
+            return View(product);
+      }
 
 
     }

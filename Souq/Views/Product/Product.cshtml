@@ -1,0 +1,164 @@
+﻿@model Souq.Tables.Product
+
+@{
+    ViewData["Title"] = "Product";
+}
+
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/vendor/vendor.min.css">
+    <link rel="stylesheet" href="~/css/plugins/plugins.min.css">
+    <link rel="stylesheet" href="~/css/style.min.css">
+}
+@section Scripts
+{
+
+    <!-- Use the minified version files listed below for better performance and remove the files listed above -->
+    <script src="~/js/vendor/vendor.min.js"></script>
+    <script src="~/js/plugins/plugins.min.js"></script>
+
+    <!-- Main JS -->
+    <script src="~/js/main.js"></script>
+    <script>
+        $("#plus").click(function () {
+            var QuantityValue = parseInt($("#qtyVal").val());
+             if (QuantityValue < @Model.quantity )
+            {
+                 QuantityValue = QuantityValue + 1;
+                 $("#qtyVal").val(QuantityValue);
+            }
+            else
+            {
+                QuantityValue = QuantityValue;
+            }
+        });
+
+        $("#minus").click(function () {
+            var QuantityValue = parseInt($("#qtyVal").val());
+
+            if (QuantityValue > 1)
+            {
+                QuantityValue = QuantityValue - 1;
+                $("#qtyVal").val(QuantityValue);
+            }
+        });
+
+
+    </script>
+
+
+}
+
+<div class="product-area product-details-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-12 mt-50">
+                <img src="@Model.productImgUrl.Replace("D:\\SouQ\\Souq\\Souq\\wwwroot","")" class="w-100" />
+            </div>
+
+            <div class="col-lg-7 col-12 mt-45">
+                <!-- Product Summery Start -->
+                <div class="product-summery position-relative">
+                    <div class="product-head">
+                        <h1 class="product-title mb-1">@Model.productName</h1>
+                    </div>
+                    <div class="product-category">
+                        <h6 class="mb-3">@Model.category</h6>
+                    </div>
+                    <div class="price-box">
+                        <span class="regular-price"> @Model.productPrice <span class="pl-1">EGP</span> </span>
+                    </div>
+
+                    <div class="product-packeges">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td class="label"><span>Quantity</span></td>
+                                    <td class="value">
+                                        <div class="product-quantity">
+                                            <span class="qty-btn minus" id="minus"><i class="fa fa-angle-down"></i></span>
+                                            <input type="text" class="input-qty" id="qtyVal" value="1" disabled>
+                                            <span class="qty-btn plus" id="plus"><i class="fa fa-angle-up"></i></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="product-buttons grid_list">
+                        <div class="action-link">
+                            <button class="btn-secondary">Add To Cart</button>
+                            <a class="wishlist-add same-link" href="wishlist.html" title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>
+                        </div>
+                    </div>
+                    <div class="product-meta">
+                        <div class="desc-content">
+                            <div class="social_sharing d-flex">
+                                <h5>share this post:</h5>
+                                <ul>
+                                    <li><a href="#" title="facebook"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#" title="twitter"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#" title="pinterest"><i class="fa fa-pinterest"></i></a></li>
+                                    <li><a href="#" title="google+"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="#" title="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Summery End -->
+            </div>
+        </div>
+        <div class="row mt-40">
+            <div class="col-lg-3 col-sm-3 col-md-2">
+                <!-- Product Description Tab Start -->
+                <div class="product-desc-tab">
+                    <ul class="nav flex-column" role="tablist">
+                        <li><a class="active" href="#description" role="tab" data-toggle="tab" aria-selected="false">Description</a></li>
+                        <li><a href="#sheet" role="tab" data-toggle="tab" aria-selected="false">Data sheet</a></li>
+                    </ul>
+                </div>
+                <!-- Product Description Tab End -->
+            </div>
+            <div class="col-lg-9 col-sm-9 col-md-10">
+                <div class="product-desc-tab-content">
+                    <!-- Start Single Content -->
+                    <div role="tabpanel" id="description" class="product_tab_content fade active show">
+                        <div class="product_description_wrap mt-20">
+                            <div class="product_desc">
+                                <h2 class="last-title mb-20">Details</h2>
+                                <p> @Model.Description </p>
+                            </div>
+                            <div class="pro__feature mt-20">
+                                <h2 class="last-title mb-20">Features</h2>
+                                <ul class="feature_list">
+                                    <li><a href="#"><i class="zmdi zmdi-play-circle"></i> <span class="font-weight-bolder text-info"> Brand : </span> @Model.productBrand</a></li>
+                                    <li><a href="#"><i class="zmdi zmdi-play-circle"></i> <span class="font-weight-bolder text-info"> Ram Size:</span>  @Model.ProductRamUsage</a></li>
+                                    <li><a href="#"><i class="zmdi zmdi-play-circle"></i> <span class="font-weight-bolder text-info"> Disk Size: </span> @Model.ProductDiskUsage</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Content -->
+                    <!-- Start Single Content -->
+                    <div role="tabpanel" id="sheet" class="product_tab_content fade">
+                        <div class="pro__feature mt-20">
+                            <h2 class="last-title mb-20">Features</h2>
+                            <ul class="feature_list">
+                                <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Duis aute irure dolor in reprehenderit</a></li>
+                                <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Irure dolor in reprehenderit in voluptate</a></li>
+                                <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Sed do eiusmod tempor incididunt ut labore</a></li>
+                                <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Nisi ut aliquip ex ea commodo consequat.</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End Single Content -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+

@@ -225,6 +225,10 @@ namespace Souq.DataAccessLayer.Migrations
                     b.Property<string>("AppUserId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ProductDiskUsage")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
