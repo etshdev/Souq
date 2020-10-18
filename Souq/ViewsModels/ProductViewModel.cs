@@ -32,7 +32,7 @@ namespace Souq.ViewsModels
         [Required]
         public string Description { get; set; }
 
-        [Required]
+       
         [Display(Name = "Proudct Picture")]
         public IFormFile productImg { get; set; }
 
