@@ -95,10 +95,18 @@ namespace Souq.Controllers
 
         public IActionResult MyCart(int id)
         {
-            // var listOfProduct = _CartDetailes.GetAll().Include(x => x.Product).Where(x => x.CartId == id).Select(x=>new xx {Product= x.Product,productcount= x.productcount});
-            var listOfProduct = _CartDetailes.GetAll().Include(x => x.Product).Where(x => x.CartId == id).ToList();
+            if(_repoCart.GetById(id)?.AppUserId==_userManager.GetUserId(User))
+            {
+                // var listOfProduct = _CartDetailes.GetAll().Include(x => x.Product).Where(x => x.CartId == id).Select(x=>new xx {Product= x.Product,productcount= x.productcount});
+                var listOfProduct = _CartDetailes.GetAll().Include(x => x.Product).Where(x => x.CartId == id).ToList();
 
-            return View(listOfProduct);
+                return View(listOfProduct);
+            }
+            else
+            {
+                return NotFound();
+            }
+            
         }
     //    public class xx
     //    {
