@@ -44,6 +44,20 @@
         });
 
 
+        function AddToCart() {
+            
+            let ProductId = '@Model.Id';
+            var QuantityValue = parseInt($("#qtyVal").val());
+            $.ajax({
+                type: "Post",
+                url: "@Url.Action("AddToUserCart", "Cart")",
+                data: { 'id': ProductId, 'count': QuantityValue },
+                dataType: "json",
+                success: function (response) {
+                    alert(response);
+                }
+            });
+        }
     </script>
 
 
@@ -57,6 +71,7 @@
             </div>
 
             <div class="col-lg-7 col-12 mt-45">
+                
                 <!-- Product Summery Start -->
                 <div class="product-summery position-relative">
                     <div class="product-head">
@@ -87,7 +102,7 @@
                     </div>
                     <div class="product-buttons grid_list">
                         <div class="action-link">
-                            <button class="btn-secondary">Add To Cart</button>
+                            <button class="btn-secondary" onclick="AddToCart()">Add To Cart</button>
                             <a class="wishlist-add same-link" href="wishlist.html" title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>
                         </div>
                     </div>

@@ -19,10 +19,27 @@
                         <h6 class="text-info"> <span class="text-dark">Disk Usage:</span> @item.ProductDiskUsage </h6>
                         <h6 class="text-info"> <span class="text-dark">Ram Usage:</span> @item.ProductRamUsage </h6>
                         <a href="/product/product/?id=@item.Id" class="btn btn-secondary mt-3 pb-1">التفاصيل</a>
-                        <a href="/cart/AddToUserCart/?id=@item.Id" class="btn btn-success mt-3 ml-3 px-2 pb-1">إضافة للعربة</a>
+                        <button  class="btn btn-success mt-3 ml-3 px-2 pb-1" onclick="AddToCart(@item.Id)">إضافة للعربة</button>
                     </div>
                 </div>
             </div>
         }
-     </div>
- </div>
+    </div>
+</div>
+@section Scripts
+{
+    <script>
+    function AddToCart(id) {
+
+            $.ajax({
+                type: "Post",
+                url: "@Url.Action("AddToUserCart", "Cart")",
+                data: { 'id': id, 'count': 1 },
+                dataType: "json",
+                success: function (response) {
+                    alert(response);
+                }
+            });
+        }
+    </script>
+}

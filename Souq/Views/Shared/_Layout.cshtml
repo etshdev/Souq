@@ -1,7 +1,9 @@
 ﻿@using Microsoft.AspNetCore.Identity
+@using Souq.Tables
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
-
+@inject IRepository<User> MyUser
+@inject IRepository<Cart> _Cart
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +12,7 @@
     <title>@ViewData["Title"] - Souq</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link href="~/css/header&footer.css" rel="stylesheet" />
+    <link href="~/css/all.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" />
     @RenderSection("Styles", required: false)
 
@@ -24,8 +27,9 @@
                     @if (SignInManager.IsSignedIn(User))
                     {
                         <h6 class="text-white login pt-3 pb-2">
-                            <a asp-action="index" asp-controller="home" class="text-decoration-none text-white"> مرحبا : <span> @User.Identity.Name</span> </a> <a asp-action="logout" asp-controller="account"
-                                                                                                                                                      class="text-decoration-none text-white"> <i class="fas fa-sign-in-alt pr-1"> </i> </a>
+                            <a asp-action="index" asp-controller="home" class="text-decoration-none text-white"> مرحبا : <span> @MyUser.Find(s => s.AppUserId == UserManager.GetUserId(User)).SingleOrDefault().FullName </span> </a> <a asp-action="logout" asp-controller="account" class="text-decoration-none text-white">
+                                <i class="fas fa-sign-in-alt pr-1"> </i>
+                            </a>
                             <a href="./contactUs.html" class="text-decoration-none text-white pr-2"> اتصل بنا <i class="fas fa-phone-alt"></i> </a>
                         </h6>
                     }
@@ -35,8 +39,8 @@
 
                             <a asp-action="login" asp-controller="account" class="text-decoration-none text-white">تسجيل الدخول </a>
                             / <a asp-action="signup" asp-controller="account" class="text-decoration-none text-white"> التسجيل </a>
-                            / <a asp-action="signupseller" asp-controller="account"  class="text-decoration-none text-white">التسجيل كبائع </a>
-                            
+                            / <a asp-action="signupseller" asp-controller="account" class="text-decoration-none text-white">التسجيل كبائع </a>
+
                         </h6>
                     }
 
@@ -73,7 +77,7 @@
                                 @if (User.IsInRole("SellerRole"))
                                 {
                                     <li class="nav-item  ">
-                                        <a class="nav-link text-white" asp-action="MyProducts" asp-controller="product" >منتجاتي</a>
+                                        <a class="nav-link text-white" asp-action="MyProducts" asp-controller="product">منتجاتي</a>
                                     </li>
                                     <li class="nav-item  ">
                                         <a class="nav-link btn  text-white px-5" asp-action="addproduct" asp-controller="Product">اضافة منتج</a>
@@ -81,9 +85,12 @@
                                 }
                                 else
                                 {
-                                    <li class="nav-item  ">
-                                        <a class="nav-link text-white" href="#">عربة التسوق </a>
-                                    </li>
+                            <li class="nav-item  ">
+                                  @{ 
+                                      var CartId = _Cart.Find(x => x.AppUserId == UserManager.GetUserId(User)).FirstOrDefault().Id; 
+                                  }
+                                <a class="nav-link text-white" asp-action="mycart" asp-controller="cart" asp-route-id="@CartId">عربة التسوق </a>
+                            </li>
                                 }
 
                             </ul>
@@ -96,11 +103,11 @@
 
     </header>
 
-   
-        @RenderBody()
 
-    
-    
+    @RenderBody()
+
+
+
     <footer class=" footer text-white bg-primary text-center mt-5">
         <div class="container">
             &copy; 2020 - SouQ - <a href="https://www.facebook.com/etsh.74/" class="text-decoration-none text-white ">Mohamed Hesham</a>

@@ -89,6 +89,7 @@ namespace Souq.Controllers
                     {
                         var user = new User()
                         {
+                            FullName=model.FullName,
                             Address = model.Address,
                             AppUserId = newUser.Id
                         };
@@ -177,6 +178,7 @@ namespace Souq.Controllers
                     {
                         var user = new User()
                         {
+                            FullName=model.FullName,
                             Address = model.Address,
                             AppUserId = newUser.Id
                         };

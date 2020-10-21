@@ -1,0 +1,55 @@
+﻿@model List<CartDetailes>
+@{
+    ViewData["Title"] = "MyCart";
+}
+
+<div class="CartPage">
+    <div class="container px-5">
+        <h2 class="pt-5 pb-3 text-info">Shopping Cart(@Model.Count)   </h2>
+        <div class="row">
+            <div class="col-md-7  ">
+                <div class="py-3">
+                    <div class="row  mt-2  ">
+                        @foreach (var item in Model)
+                        {
+
+                            <div class="col-4 py-4 border-left border-bottom border-top rounded-left bg-white my-2  ">
+                                <img src="@item.Product.productImgUrl.Replace("D:\\SouQ\\Souq\\Souq\\wwwroot","")" class="w-100" alt=" @item.Product.productName" />
+                            </div>
+                            <div class="col-8 py-5 border-right border-top border-bottom rounded-right bg-white my-2 ">
+                                <h6>@item.Product.productName</h6>
+                                <h6 class="text-danger">@item.Product.productPrice</h6>
+                                <p><span class="text-center font-weight-bolder"> Specifications:</span> @item.Product.productBrand ,HardDisk: @item.Product.ProductDiskUsage ,Ram: @item.Product.ProductRamUsage </p>
+                                <h6>Count:@item.productcount</h6>
+                                <h6 class="text-info">   No shipping charges     </h6>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 offset-md-1 py-4 pl-3 ">
+                @{
+                  var TotalPrice =  Model.Select(x => x.Product.productPrice*x.productcount).ToList().Sum();
+
+                 
+
+                }
+                <div class="bg-white border rounded p-3">
+                    <h4 class="text-center"> Total Price </h4>
+                    <br />
+                    <h2 class="text-center text-danger font-weight-bolder">@TotalPrice EGP</h2>
+                    <hr />
+                    <p>
+                        <span class="rounded-circle border bg-info py-1 px-2">i</span> You must ensure that your account has a balance greater than @TotalPrice
+                    </p>
+                </div>
+                <button class="btn btn-lg btn-success mt-2 px-5 text-center w-100"> Check Out </button>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+

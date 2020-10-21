@@ -19,6 +19,8 @@ namespace Souq.DataAccessLayer
 
        public DbSet<Product> products { get; set; }
        public  DbSet<User> users { get; set; }
+        public DbSet<Cart>carts { get; set; }
+        public DbSet<CartDetailes> cartDetailes { get; set; }
 
 
     }
