@@ -4,31 +4,45 @@
     ViewData["Title"] = "products";
 }
 
-<div class="container py-3" dir="ltr">
-    <h1 class="text-center pb-3 text-success"> <span class="font-weight-bolder">O</span>ur Products </h1>
-    <div class="row px-2">
-        @foreach (var item in Model)
-        {
-            <div class="col-md-3 col-sm-6 px-2 mt-2">
-                <div class="border rounded">
-                    <img src="@(item.productImgUrl.Replace("D:\\SouQ\\Souq\\Souq\\wwwroot",""))" class="card-img-top prodImg border-bottom bg-dark " alt="@item.productName">
-                    <div class="card-body pl-2 pt-1">
-                        <h5 class="card-title px-0 pt-2 text-muted font-weight-bold ">@item.productName</h5>
-                        <h6 class="text-info"> <span class="text-dark">Category:</span> @item.category </h6>
-                        <h6 class="text-info"> <span class="text-dark"> Price: </span> @item.productPrice </h6>
-                        <h6 class="text-info"> <span class="text-dark">Disk Usage:</span> @item.ProductDiskUsage </h6>
-                        <h6 class="text-info"> <span class="text-dark">Ram Usage:</span> @item.ProductRamUsage </h6>
-                        <a href="/product/product/?id=@item.Id" class="btn btn-secondary mt-3 pb-1">التفاصيل</a>
-                        <button  class="btn btn-success mt-3 ml-3 px-2 pb-1" onclick="AddToCart(@item.Id)">إضافة للعربة</button>
+
+        <div class="container py-3" dir="ltr" style="position: relative;">
+            <h1 class="text-center pb-3 text-success"> <span class="font-weight-bolder">O</span>ur Products </h1>
+            <div class="row px-2">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-3 col-sm-6 px-2 mt-2">
+                        <div class="border rounded">
+                            <img src="@(item.productImgUrl.Replace("D:\\SouQ\\Souq\\Souq\\wwwroot",""))" class="card-img-top prodImg border-bottom bg-dark " alt="@item.productName">
+                            <div class="card-body pl-2 pt-1">
+                                <h5 class="card-title px-0 pt-2 text-muted font-weight-bold ">@item.productName</h5>
+                                <h6 class="text-info"> <span class="text-dark">Category:</span> @item.category </h6>
+                                <h6 class="text-info"> <span class="text-dark"> Price: </span> @item.productPrice </h6>
+                                <h6 class="text-info"> <span class="text-dark">Disk Usage:</span> @item.ProductDiskUsage </h6>
+                                <h6 class="text-info"> <span class="text-dark">Ram Usage:</span> @item.ProductRamUsage </h6>
+                                <a href="/product/product/?id=@item.Id" class="btn btn-secondary mt-3 pb-1">التفاصيل</a>
+                                <button class="btn btn-success mt-3 ml-3 px-2 pb-1" onclick="AddToCart(@item.Id)">إضافة للعربة</button>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                }
             </div>
-        }
-    </div>
-</div>
-@section Scripts
+        </div>
+
+        <div class="toast" style="position: fixed; top: 20px; right: 20px;">
+            <div class="toast-header" dir="rtl">
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body font-weight-bold">
+                <i class="fas fa-check-circle text-success"></i>  تم إضافة المنتج بنجاح   
+            </div>
+        </div>
+
+
+        @section Scripts
 {
-    <script>
+            <script>
     function AddToCart(id) {
 
             $.ajax({
@@ -37,9 +51,12 @@
                 data: { 'id': id, 'count': 1 },
                 dataType: "json",
                 success: function (response) {
-                    alert(response);
+                    
+                    $('.toast').toast({ 'delay': 2000 });
+                    $('.toast').toast('show');
+
                 }
             });
         }
-    </script>
-}
+            </script>
+        }

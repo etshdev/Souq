@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-7  ">
                 <div class="py-3">
-                    <div class="row  mt-2  ">
+                    <div class="row  mt-2 prod  ">
                         @foreach (var item in Model)
                         {
 
@@ -17,10 +17,34 @@
                                 <img src="@item.Product.productImgUrl.Replace("D:\\SouQ\\Souq\\Souq\\wwwroot","")" class="w-100" alt=" @item.Product.productName" />
                             </div>
                             <div class="col-8 py-5 border-right border-top border-bottom rounded-right bg-white my-2 ">
+                                <a class="Product-delete" asp-action="DeleteProductFromCart" asp-controller="cart" asp-route-prodId="@item.Product.Id"> <i class="fas fa-backspace"></i> </a>
+
                                 <h6>@item.Product.productName</h6>
-                                <h6 class="text-danger">@item.Product.productPrice</h6>
+                                <h6 class="text-danger productPrice">@item.Product.productPrice</h6>
                                 <p><span class="text-center font-weight-bolder"> Specifications:</span> @item.Product.productBrand ,HardDisk: @item.Product.ProductDiskUsage ,Ram: @item.Product.ProductRamUsage </p>
-                                <h6>Count:@item.productcount</h6>
+                                <div class="row align-items-center">
+                                    <div class="col-md-4 ">
+                                        <label class="font-weight-bold">QTY:</label>
+                                    </div>
+                                    <div class="col-md-8 ">
+                                        <select class="custom-select my-1 mr-sm-2 product-qantaty" product-id="@item.ProductId" cart-id="@item.CartId" >
+                                            @for (int i = 1; i <= item.Product.quantity; i++)
+                                            {
+                                                if (i == item.productcount)
+                                                {
+                                                    <option value="@i" selected>@i</option>
+
+                                                }
+                                                else
+                                                {
+                                                    <option value="@i">@i</option>
+                                                }
+                                            }
+
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <h6 class="text-info">   No shipping charges     </h6>
                             </div>
                         }
@@ -28,19 +52,21 @@
                 </div>
             </div>
             <div class="col-md-4 offset-md-1 py-4 pl-3 ">
-                @{
-                  var TotalPrice =  Model.Select(x => x.Product.productPrice*x.productcount).ToList().Sum();
+              
+                    @{
+                        var TotalPrice = Model.Select(x => x.Product.productPrice * x.productcount).ToList().Sum();
 
-                 
 
-                }
+                    }
+               
+             
                 <div class="bg-white border rounded p-3">
                     <h4 class="text-center"> Total Price </h4>
                     <br />
-                    <h2 class="text-center text-danger font-weight-bolder">@TotalPrice EGP</h2>
+                    <h2 class="text-center text-danger font-weight-bolder"> <span id="TotalPrice">@TotalPrice</span> EGP </h2> 
                     <hr />
                     <p>
-                        <span class="rounded-circle border bg-info py-1 px-2">i</span> You must ensure that your account has a balance greater than @TotalPrice
+                        <i class="fas fa-info-circle"></i> You must ensure that your account has a balance greater than <span id="TotalPrice2">@TotalPrice</span>
                     </p>
                 </div>
                 <button class="btn btn-lg btn-success mt-2 px-5 text-center w-100"> Check Out </button>
@@ -50,6 +76,56 @@
         </div>
     </div>
 </div>
+
+@section Scripts
+{
+
+
+    <script>
+
+        function ChangeCount(cartId, prodId ,count) {
+                $.ajax({
+                    type: "Post",
+                    url: "@Url.Action("ChangeQuntity", "Cart")",
+                    data: { 'cartId': cartId, "prodId": prodId, 'count': count },
+                    dataType: "json",
+                    success: function (response) {
+                     let TotalPrice =   $("#TotalPrice").val();
+
+                        $("#TotalPrice").html("");
+                        $("#TotalPrice").html(onproductPriceChange());
+                        $("#TotalPrice2").html(onproductPriceChange());
+   
+                    }
+                });
+         }
+
+       
+        $(".product-qantaty").change(function () {
+
+            let productId = $(this).attr('product-id');
+            let cartId = $(this).attr('cart-id');
+            let count = $(this).val();
+
+            ChangeCount(cartId, productId, count);
+
+        });
+
+        function onproductPriceChange() {
+            var productCount = $(".product-qantaty");
+            var productPrice = $(".productPrice");
+            var sum = 0;
+            for (var i = 0; i < productCount.length; i++) {
+                sum += (parseInt($(productCount[i]).val()) * parseInt($(productPrice[i]).html()));
+
+            }
+            return sum;
+        }
+
+
+    </script>
+}
+
 
 
 

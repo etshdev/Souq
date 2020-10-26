@@ -93,6 +93,16 @@ namespace Souq.Controllers
 
         }
 
+        public IActionResult ChangeQuntity(int cartId,int prodId , int count)
+        {
+          var cart =  _repoCart.Find(c => c.Id == cartId).FirstOrDefault();
+            var cartDetailes = _CartDetailes.Find(c => c.CartId == cart.Id).FirstOrDefault(p => p.ProductId == prodId);
+            cartDetailes.productcount = count;
+            _CartDetailes.Update(cartDetailes);
+            return Json("");
+            
+           
+        }
         public IActionResult MyCart(int id)
         {
             if(_repoCart.GetById(id)?.AppUserId==_userManager.GetUserId(User))
@@ -107,6 +117,30 @@ namespace Souq.Controllers
                 return NotFound();
             }
             
+        }
+        public IActionResult DeleteProductFromCart(int prodId)
+        {
+            var productDetailes = _CartDetailes.GetAll().Where(x => x.Product.Id == prodId).FirstOrDefault();
+            _CartDetailes.Delete(productDetailes);
+            
+            return RedirectToAction("mycart", "cart", new { id = _repoCart.Find(x=>x.AppUserId==_userManager.GetUserId(User)).FirstOrDefault().Id });
+        }
+        [HttpGet]
+        public IActionResult CheckOut(int id)
+        {
+
+            if (_repoCart.GetById(id)?.AppUserId == _userManager.GetUserId(User))
+            {
+                // var listOfProduct = _CartDetailes.GetAll().Include(x => x.Product).Where(x => x.CartId == id).Select(x=>new xx {Product= x.Product,productcount= x.productcount});
+                var listOfProduct = _CartDetailes.GetAll().Include(x => x.Product).Where(x => x.CartId == id).ToList();
+
+                return View(listOfProduct);
+            }
+            else
+            {
+                return NotFound();
+            }
+
         }
     //    public class xx
     //    {

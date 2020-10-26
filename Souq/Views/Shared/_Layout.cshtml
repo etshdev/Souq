@@ -85,12 +85,12 @@
                                 }
                                 else
                                 {
-                            <li class="nav-item  ">
-                                  @{ 
-                                      var CartId = _Cart.Find(x => x.AppUserId == UserManager.GetUserId(User)).FirstOrDefault().Id; 
-                                  }
-                                <a class="nav-link text-white" asp-action="mycart" asp-controller="cart" asp-route-id="@CartId">عربة التسوق </a>
-                            </li>
+                                    <li class="nav-item  ">
+                                        @{
+                                            var CartId = _Cart.Find(x => x.AppUserId == UserManager.GetUserId(User)).FirstOrDefault().Id;
+                                        }
+                                        <a class="nav-link text-white" asp-action="mycart" asp-controller="cart" asp-route-id="@CartId">عربة التسوق </a>
+                                    </li>
                                 }
 
                             </ul>
@@ -117,5 +117,6 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
+
 </body>
 </html>
